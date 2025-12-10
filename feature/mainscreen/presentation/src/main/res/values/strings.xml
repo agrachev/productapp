@@ -1,0 +1,4 @@
+<resources>
+    <string name="lbl_offline_mode">Offline Mode</string>
+    <string name="lbl_back_online">Back Online</string>
+</resources>
