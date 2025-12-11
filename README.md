@@ -55,21 +55,22 @@ Feature-specific modules. Each feature is internally divided into domain, data, 
 Gradle convention plugins responsible for unified configuration across modules, build settings, dependency management, and code quality integration.
 
 ## Technical Stack
-- Android SDK  
-- Kotlin  
-- Hilt (including Assist and AutoBind)  
-- Room  
-- Retrofit  
-- WorkManager  
-- Coroutines / Flow  
-- Jetpack Compose  
-- Compose Navigation  
-- Material Design 3  
-- Paging 3  
-- Coil  
-- MVVM  
-- Clean Architecture  
-- Gradle Multimodule  
+- Android SDK
+- Kotlin
+- Hilt (including Assist and AutoBind)
+- Room
+- Retrofit
+- Moshi
+- WorkManager
+- Coroutines / Flow
+- Jetpack Compose
+- Compose Navigation
+- Material Design 3
+- Paging 3
+- Coil
+- MVVM
+- Clean Architecture
+- Gradle Multimodule
 - Detekt
 
 ## Media
