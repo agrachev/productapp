@@ -74,3 +74,4 @@ Gradle convention plugins responsible for unified configuration across modules, 
 
 ## Media
 
+<img src="misc/preview/01.gif" width="250"><img src="misc/screenshots/01.png" width="250"><img src="misc/screenshots/02.png" width="250"><img src="misc/screenshots/03.png" width="250"><img src="misc/screenshots/04.png" width="250"><img src="misc/screenshots/05.png" width="250"><img src="misc/screenshots/06.png" width="250"><img src="misc/screenshots/07.png" width="250"><img src="misc/screenshots/08.png" width="250"><img src="misc/screenshots/09.png" width="250"><img src="misc/screenshots/10.png" width="250">
