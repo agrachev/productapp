@@ -37,7 +37,7 @@ Root navigation definitions and destination models used across modules.
 Feature-specific modules. Each feature is internally divided into domain, data, and presentation layers and can be included dynamically.
 
 - `:feature:mainscreen`  
-  Main screen implementation and navigation graph composition.
+  Main screen content implementation and navigation graph composition.
 
 - `:feature:productlist`  
   Product list screen, including filtering logic and paging.
@@ -49,7 +49,7 @@ Feature-specific modules. Each feature is internally divided into domain, data, 
   Detailed product description screen.
 
 - `:feature:connectivity`  
-  Network connectivity monitoring and UI indicator.
+  Network connectivity monitoring service.
 
 ### `:build-logic`
 Gradle convention plugins responsible for unified configuration across modules, build settings, dependency management, and code quality integration.
