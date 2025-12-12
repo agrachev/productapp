@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.withTimeout
 import ru.agrachev.feature.productlist.domain.ProductListSynchronizer
+import java.io.SyncFailedException
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 
@@ -32,7 +33,7 @@ internal class WorkManagerProductListSynchronizer @Inject constructor(
                 .takeWhile { it?.state != WorkInfo.State.SUCCEEDED }
                 .collect {
                     if (it?.state == WorkInfo.State.FAILED) {
-                        throw Exception(it.outputData.getString(EXCEPTION_MESSAGE_TAG))
+                        throw SyncFailedException(it.outputData.getString(EXCEPTION_MESSAGE_TAG))
                     }
                 }
         }

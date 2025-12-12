@@ -1,7 +1,6 @@
 package ru.agrachev.feature.productlist.presentation.navigation
 
 import androidx.compose.animation.AnimatedContentScope
-import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingBag
 import androidx.navigation.NavController
@@ -30,10 +29,9 @@ internal class AllProductsNavProvider @Inject constructor() : NavProvider() {
         builder: NavGraphBuilder,
         navController: NavController,
         navEntryPointProviders: NavEntryPointProviders,
-        sharedTransitionScope: SharedTransitionScope,
         animatedContentScope: AnimatedContentScope?
-    ) = builder.buildBottomNavigationEntry {
-        AllProductsScreen(sharedTransitionScope, animatedContentScope ?: it) { productId ->
+    ) = builder.buildBottomNavigationEntry(animatedContentScope) {
+        AllProductsScreen { productId ->
             navController.navigate(ProductCardDestination.routeFor(productId))
         }
     }

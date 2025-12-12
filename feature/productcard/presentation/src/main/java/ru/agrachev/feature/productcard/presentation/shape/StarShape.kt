@@ -12,7 +12,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 internal class StarShape(
-    @get:IntRange(from = 3) private val numPoints: Int = 5,
+    @get:IntRange(from = 3) private val numPoints: Int = DEFAULT_SHAPE_NUM_POINTS,
 ) : Shape {
     override fun createOutline(
         size: Size,
@@ -38,7 +38,7 @@ internal class StarShape(
         centerY: Float,
         outerRadius: Float,
     ): List<Pair<Float, Float>> {
-        val innerRadius = outerRadius * 0.5f
+        val innerRadius = outerRadius / 2f
         val angleStep = PI / numPoints
         return List(numPoints * 2) {
             val radius = if (it % 2 == 0) outerRadius else innerRadius
@@ -51,3 +51,5 @@ internal class StarShape(
 }
 
 internal val FivePointStar = StarShape()
+
+private const val DEFAULT_SHAPE_NUM_POINTS = 5

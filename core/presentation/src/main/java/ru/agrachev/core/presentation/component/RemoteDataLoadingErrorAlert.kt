@@ -53,7 +53,7 @@ internal fun RemoteDataLoadingErrorAlert(
                     productList.refresh()
                 },
                 modifier = Modifier
-                    .fillMaxWidth(.4f)
+                    .fillMaxWidth(fraction = .4f)
             ) {
                 Text(
                     text = stringResource(R.string.lbl_reload),

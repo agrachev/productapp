@@ -1,7 +1,6 @@
 package ru.agrachev.feature.favorites.presentation.navigation
 
 import androidx.compose.animation.AnimatedContentScope
-import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.navigation.NavController
@@ -29,10 +28,9 @@ internal class FavoritesNavProvider @Inject constructor() : NavProvider() {
         builder: NavGraphBuilder,
         navController: NavController,
         navEntryPointProviders: NavEntryPointProviders,
-        sharedTransitionScope: SharedTransitionScope,
         animatedContentScope: AnimatedContentScope?,
-    ) = builder.buildBottomNavigationEntry {
-        FavoritesScreen(sharedTransitionScope, animatedContentScope ?: it) { productId ->
+    ) = builder.buildBottomNavigationEntry(animatedContentScope) {
+        FavoritesScreen { productId ->
             navController.navigate(ProductCardDestination.routeFor(productId))
         }
     }

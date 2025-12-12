@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import ru.agrachev.core.navigation.Destination
+import ru.agrachev.core.presentation.animatedScopeComposable
 
 abstract class NavProvider : NavEntry<NavProvider.BottomBarItem> {
 
@@ -21,9 +21,11 @@ abstract class NavProvider : NavEntry<NavProvider.BottomBarItem> {
     ) : NavEntry.NavItem
 
     protected fun NavGraphBuilder.buildBottomNavigationEntry(
+        animatedContentScope: AnimatedContentScope?,
         content: @Composable (AnimatedContentScope) -> Unit,
     ) = this.run {
-        composable(
+        animatedScopeComposable(
+            rootAnimatedContentScope = animatedContentScope,
             route = item.destination.toString(),
             arguments = listOf(navArgument(DEST_ARG_NAME) {
                 defaultValue = item.ordinal

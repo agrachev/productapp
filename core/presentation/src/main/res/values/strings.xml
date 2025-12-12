@@ -1,5 +1,5 @@
 <resources>
-    <string name="price_format">$%.2f</string>
+    <string name="lbl_price_format">$%.2f</string>
     <string name="lbl_error">Oops</string>
     <string name="lbl_reload">Reload</string>
     <string name="lbl_no_data_to_display">No data to display</string>

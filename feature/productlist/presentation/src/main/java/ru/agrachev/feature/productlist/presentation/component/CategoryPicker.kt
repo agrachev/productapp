@@ -103,7 +103,9 @@ class CategoryPickerState internal constructor(
     initialExpanded: Boolean,
     internal val excludeCategories: MutableSet<String> = mutableSetOf(),
 ) {
-    val categories = mutableStateSetOf(*initialCategories.toTypedArray())
+    val categories = mutableStateSetOf<String>().also {
+        it.addAll(initialCategories)
+    }
     var expanded by mutableStateOf(initialExpanded)
 
     internal companion object {

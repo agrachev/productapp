@@ -17,15 +17,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ru.agrachev.core.presentation.model.RatingUiModel
-import ru.agrachev.feature.productcard.presentation.shape.FivePointStar
 import ru.agrachev.feature.productcard.presentation.R
+import ru.agrachev.feature.productcard.presentation.shape.FivePointStar
 
 @Composable
-internal fun RatingBar(
-    ratingUiModel: RatingUiModel,
+internal inline fun RatingBar(
     modifier: Modifier = Modifier,
+    ratingUiModelProvider: () -> RatingUiModel,
 ) {
-    with(ratingUiModel) {
+    ratingUiModelProvider().run {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = modifier then Modifier

@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import ru.agrachev.core.domain.usecase.MarkProductAsFavoriteUsecase
+import ru.agrachev.core.presentation.WhileSubscribedWithDelay
 import ru.agrachev.core.presentation.mapper.toUiModel
 import ru.agrachev.core.presentation.viewmodel.ProductAppViewModel
 import ru.agrachev.feature.productcard.domain.usecase.GetSingleProductUsecase
@@ -28,7 +29,7 @@ internal class ProductCardViewModel @Inject constructor(
     override val itemFlow = (savedStateHandle.get<Int>(PRODUCT_ID_HANDLE)?.let { productId ->
         singleProductUsecase(productId)
     } ?: flow {
-        throw Exception("$PRODUCT_ID_HANDLE handle is missing!")
+        throw IllegalStateException("$PRODUCT_ID_HANDLE handle is missing!")
     })
         .map { UiState.DataAvailable(it.toUiModel()) as UiState }
         .catch {
@@ -37,7 +38,7 @@ internal class ProductCardViewModel @Inject constructor(
         .flowOn(Dispatchers.Default)
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000L),
+            started = SharingStarted.WhileSubscribedWithDelay(),
             initialValue = null,
         )
 }

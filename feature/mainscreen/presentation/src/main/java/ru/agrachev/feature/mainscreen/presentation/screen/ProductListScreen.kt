@@ -1,7 +1,6 @@
 package ru.agrachev.feature.mainscreen.presentation.screen
 
 import androidx.compose.animation.AnimatedContentScope
-import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -17,7 +16,6 @@ import ru.agrachev.feature.mainscreen.presentation.component.BottomBar
 internal fun ProductListScreen(
     rootNavController: NavController,
     navEntryPointProviders: NavEntryPointProviders,
-    sharedTransitionScope: SharedTransitionScope,
     animatedContentScope: AnimatedContentScope,
     modifier: Modifier = Modifier,
 ) {
@@ -43,7 +41,6 @@ internal fun ProductListScreen(
                     this,
                     rootNavController,
                     navEntryPointProviders,
-                    sharedTransitionScope,
                     animatedContentScope,
                 )
             }

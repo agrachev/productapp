@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import ru.agrachev.core.presentation.LocalSharedTransitionScope
 import ru.agrachev.core.presentation.navigation.NavEntryPointProviders
 import ru.agrachev.core.presentation.startDestination
 import ru.agrachev.feature.mainscreen.presentation.connectivity.component.ConnectivityPanel
@@ -18,28 +20,31 @@ fun MainScreen(
     navEntryPointProviders: NavEntryPointProviders,
 ) {
     SharedTransitionLayout {
-        val rootNavController = rememberNavController()
-        val navEntryPointProvider = navEntryPointProviders.root
-        NavHost(
-            navController = rootNavController,
-            startDestination = navEntryPointProvider.startDestination,
-            modifier = Modifier
-                .fillMaxSize()
-                .imePadding(),
+        CompositionLocalProvider(
+            LocalSharedTransitionScope provides this,
         ) {
-            navEntryPointProvider.forEach {
-                it.graph(
-                    this,
-                    rootNavController,
-                    navEntryPointProviders,
-                    this@SharedTransitionLayout,
-                )
+            val rootNavController = rememberNavController()
+            val navEntryPointProvider = navEntryPointProviders.root
+            NavHost(
+                navController = rootNavController,
+                startDestination = navEntryPointProvider.startDestination,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .imePadding(),
+            ) {
+                navEntryPointProvider.forEach {
+                    it.graph(
+                        this,
+                        rootNavController,
+                        navEntryPointProviders,
+                    )
+                }
             }
+            ConnectivityPanel(
+                panelHeightDp = 24.dp,
+                modifier = Modifier
+                    .fillMaxWidth(),
+            )
         }
-        ConnectivityPanel(
-            panelHeightDp = 24.dp,
-            modifier = Modifier
-                .fillMaxWidth(),
-        )
     }
 }

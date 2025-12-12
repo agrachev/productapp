@@ -1,11 +1,10 @@
 package ru.agrachev.feature.productlist.presentation.component
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
@@ -37,9 +36,8 @@ internal fun FilterBox(
         val textFieldState = rememberTextFieldState()
 
         OutlinedTextField(
-            contentPadding = PaddingValues(end = 16.dp, top = 4.dp, bottom = 4.dp),
             lineLimits = TextFieldLineLimits.SingleLine,
-            shape = RoundedCornerShape(16.dp),
+            shape = CircleShape,
             state = textFieldState,
             leadingIcon = {
                 Icon(

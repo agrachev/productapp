@@ -27,6 +27,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.flow.distinctUntilChanged
 import ru.agrachev.core.presentation.toFloat
+import ru.agrachev.feature.connectivity.domain.entity.ConnectionStatus
 import ru.agrachev.feature.mainscreen.presentation.R
 import ru.agrachev.feature.mainscreen.presentation.connectivity.viewmodel.ConnectivityViewModel
 
@@ -62,27 +63,11 @@ internal fun ConnectivityPanel(
                 )
             },
     ) {
-        AnimatedContent(
-            targetState = connectionStatus,
+        ConnectionStateLabel(
             modifier = Modifier
                 .fillMaxSize(),
         ) {
-            Text(
-                text = stringResource(
-                    if (it.isConnected) {
-                        R.string.lbl_back_online
-                    } else {
-                        R.string.lbl_offline_mode
-                    }
-                ),
-                style = MaterialTheme.typography.titleMedium,
-                color = with(MaterialTheme.colorScheme) {
-                    if (it.isConnected) onPrimaryContainer else onErrorContainer
-                },
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxSize(),
-            )
+            connectionStatus
         }
         LaunchedEffect(Unit) {
             snapshotFlow {
@@ -99,6 +84,34 @@ internal fun ConnectivityPanel(
                     )
                 }
         }
+    }
+}
+
+@Composable
+private inline fun ConnectionStateLabel(
+    modifier: Modifier = Modifier,
+    connectionStatusProvider: () -> ConnectionStatus,
+) {
+    AnimatedContent(
+        targetState = connectionStatusProvider(),
+        modifier = modifier,
+    ) {
+        Text(
+            text = stringResource(
+                if (it.isConnected) {
+                    R.string.lbl_back_online
+                } else {
+                    R.string.lbl_offline_mode
+                }
+            ),
+            style = MaterialTheme.typography.titleMedium,
+            color = with(MaterialTheme.colorScheme) {
+                if (it.isConnected) onPrimaryContainer else onErrorContainer
+            },
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxSize(),
+        )
     }
 }
 

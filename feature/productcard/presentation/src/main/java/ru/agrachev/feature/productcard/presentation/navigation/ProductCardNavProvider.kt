@@ -1,12 +1,11 @@
 package ru.agrachev.feature.productcard.presentation.navigation
 
 import androidx.compose.animation.AnimatedContentScope
-import androidx.compose.animation.SharedTransitionScope
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
-import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import ru.agrachev.core.presentation.animatedScopeComposable
 import ru.agrachev.core.presentation.navigation.NavEntryPointProvider
 import ru.agrachev.core.presentation.navigation.NavEntryPointProviders
 import ru.agrachev.feature.productcard.navigation.PRODUCT_ID_HANDLE
@@ -26,19 +25,15 @@ internal class ProductCardNavProvider @Inject constructor() : NavEntryPointProvi
         builder: NavGraphBuilder,
         navController: NavController,
         navEntryPointProviders: NavEntryPointProviders,
-        sharedTransitionScope: SharedTransitionScope,
         animatedContentScope: AnimatedContentScope?,
     ) = builder.run {
-        composable(
+        animatedScopeComposable(
             route = item.destination.toString(),
             arguments = listOf(navArgument(PRODUCT_ID_HANDLE) {
                 type = NavType.IntType
             }),
         ) {
-            ProductCardScreen(
-                sharedTransitionScope,
-                this,
-            )
+            ProductCardScreen()
         }
     }
 }
