@@ -1,15 +1,17 @@
+import org.gradle.kotlin.dsl.android
+
 plugins {
     alias(libs.plugins.conventions.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.conventions.hilt)
 }
 
-android {
+android<App> {
     namespace = "ru.agrachev.productapp"
 
     defaultConfig {
         applicationId = "ru.agrachev.productapp"
-        targetSdk = 36
+        targetSdk = libs.versions.compileSdk.map { it.toInt() }.get()
         versionCode = 1
         versionName = "1.0"
     }

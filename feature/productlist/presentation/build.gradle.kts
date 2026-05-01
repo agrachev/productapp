@@ -6,7 +6,7 @@ plugins {
     id("kotlin-parcelize")
 }
 
-android {
+android<Lib> {
     namespace = "ru.agrachev.feature.productlist.presentation"
 }
 

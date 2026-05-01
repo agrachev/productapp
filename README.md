@@ -54,6 +54,9 @@ Feature-specific modules. Each feature is internally divided into domain, data, 
 ### `:build-logic`
 Gradle convention plugins responsible for unified configuration across modules, build settings, dependency management, and code quality integration.
 
+### `:buildSrc`
+Shared build logic for the project.
+
 ## Technical Stack
 - Android SDK
 - Kotlin

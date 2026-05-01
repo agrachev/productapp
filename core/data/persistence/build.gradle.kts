@@ -1,10 +1,12 @@
+
+
 plugins {
     alias(libs.plugins.conventions.android.library)
     alias(libs.plugins.conventions.hilt)
     alias(libs.plugins.androidx.room)
 }
 
-android {
+android<Lib> {
     namespace = "ru.agrachev.core.data.persistence"
     room {
         schemaDirectory("$projectDir/schemas")

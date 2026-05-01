@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.conventions.hilt)
 }
 
-android {
+android<Lib> {
     namespace = "ru.agrachev.feature.productlist.data"
 }
 

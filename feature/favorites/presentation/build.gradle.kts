@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.conventions.hilt.autobind)
 }
 
-android {
+android<Lib> {
     namespace = "ru.agrachev.feature.favorites.presentation"
 }
 
